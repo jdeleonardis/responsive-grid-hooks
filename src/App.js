@@ -1,23 +1,24 @@
-import logo from './logo.svg';
+import React, {useState, useEffect} from 'react'
 import './App.css';
 
 function App() {
+  const [users, setUsers] = useState([]);
+
+  useEffect(()=>{
+    async function fetchData(){
+      setUsers(
+        await fetch('https://reqres.in/api/users?page=2')
+        .then(res => res.json())
+        .then(res => res.data)
+      )
+    }
+    fetchData();
+  },[])
+
   return (
     <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
+      <h3>THE TRUE BEAUTY OF MATERIAL UI</h3>
+      {users.map(user => user.email)}
     </div>
   );
 }
