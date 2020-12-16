@@ -20,7 +20,7 @@ function App() {
 
   return (
     <div className="App">
-      <h3>THE TRUE BEAUTY OF MATERIAL UI</h3>
+      <h3>MATERIAL UI BUILD</h3>
       <Grid
       container
       spacing={10}
@@ -28,11 +28,13 @@ function App() {
       >
         {users.map(user => 
         <Grid
+        key={user.id}
         item
         xs={12} sm={6} md={4} lg={4} xl={3}>
 
             <PplCard 
-              
+              key={user.id}
+              user={user}
             />        
 
         </Grid>
